@@ -6,21 +6,26 @@
 using namespace std;
 int swaps(0);
 
+int choosePivot(int array[], int l, int r) {
+	int m = (l + r) / 2;
+
+	if (array[m] < array[l]) {
+		std::swap(array[l], array[m]);
+	}
+	if (array[r] < array[l]) {
+		std::swap(array[l], array[r]);
+	}
+	if (array[r]<array[m]) {
+		std::swap(array[m], array[r]);
+	}
+
+	return m;
+}
+
 int partition(int array[], int l, int r) {
 
-    int m = (l + r) / 2;
-
-    if (array[m] < array[l]) {
-        std::swap(array[l], array[m]);
-    }
-    if (array[r] < array[l]) {
-        std::swap(array[l], array[r]);
-    }
-    if (array[r]<array[m]){
-        std::swap(array[m], array[r]);
-    }
-
-    std:swap(array[m], array[l]);
+	int mPivot = choosePivot(array, l, r);
+	std:swap(array[mPivot], array[l]);
     int pivot = array[l];
     int i = l + 1;
 
